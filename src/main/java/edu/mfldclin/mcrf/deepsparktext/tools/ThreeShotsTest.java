@@ -96,7 +96,7 @@ public class ThreeShotsTest extends ParagraphVectorsClassifierExample {
     }
     */
     public void moveToTempAllThreeShots() throws IOException {
-        File tmp = new File(System.getProperty("user.home") + "/" + new Date().getTime());
+        File tmp = new File(System.getProperty("user.home") + "/deep_temp/" + new Date().getTime());
         tmp.mkdirs();
 
         firstShot = new LinkedList<>();
