@@ -400,7 +400,7 @@ public class ParagraphVectorsClassifierExample {
         String dir = tmpDir + "/" + System.currentTimeMillis();
         File file = new File(dir + "/doc");
         file.mkdirs();
-        Files.write(Paths.get(dir + "/doc"), stringData.getBytes("UTF-8"), Op);
+        Files.write(Paths.get(dir + "/doc"), stringData.getBytes("UTF-8"));
         return dir;
     }
 
