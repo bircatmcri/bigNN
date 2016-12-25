@@ -37,6 +37,7 @@ public class MainFram extends javax.swing.JFrame {
     private ThreeShotsTest app;
     private int shots;
     private Evaluation[] result;
+    private Evaluation textTesult;
 
     /*
     private ParagraphVectors paragraphVectors;
@@ -115,6 +116,9 @@ public class MainFram extends javax.swing.JFrame {
         txtDL4JWindowSize = new javax.swing.JTextField();
         lblWindowSizeDes = new javax.swing.JLabel();
         btnApplyDL4J = new javax.swing.JButton();
+        lblIterations = new javax.swing.JLabel();
+        lblIterationsDes = new javax.swing.JLabel();
+        txtDL4JIterations = new javax.swing.JTextField();
         pnlTokenization = new javax.swing.JPanel();
         rdbCommonPreProcess = new javax.swing.JRadioButton();
         rdbStemmingPreProcess = new javax.swing.JRadioButton();
@@ -123,6 +127,12 @@ public class MainFram extends javax.swing.JFrame {
         btnApplyDL4JTokenize = new javax.swing.JButton();
         pnlSettingGui = new javax.swing.JPanel();
         tgbJavaLookFeel = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaTestText = new javax.swing.JTextArea();
+        btnTestText = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txaLogTestText = new javax.swing.JTextArea();
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,7 +198,7 @@ public class MainFram extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(prgLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -225,7 +235,7 @@ public class MainFram extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(prgTraining, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -294,7 +304,7 @@ public class MainFram extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 395, Short.MAX_VALUE)
                 .addComponent(btnApplySpark)
                 .addContainerGap())
         );
@@ -340,6 +350,11 @@ public class MainFram extends javax.swing.JFrame {
             }
         });
 
+        lblIterations.setText("Iterations:");
+
+        lblIterationsDes.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        lblIterationsDes.setText("<html>bla bla bla</html>");
+
         javax.swing.GroupLayout pnlSettingDL4JLayout = new javax.swing.GroupLayout(pnlSettingDL4J);
         pnlSettingDL4J.setLayout(pnlSettingDL4JLayout);
         pnlSettingDL4JLayout.setHorizontalGroup(
@@ -369,6 +384,13 @@ public class MainFram extends javax.swing.JFrame {
                         .addComponent(lblWindowSize)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtDL4JWindowSize, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingDL4JLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnApplyDL4J))
+                    .addGroup(pnlSettingDL4JLayout.createSequentialGroup()
+                        .addComponent(lblIterations)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDL4JIterations, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlSettingDL4JLayout.createSequentialGroup()
                         .addGroup(pnlSettingDL4JLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,11 +398,9 @@ public class MainFram extends javax.swing.JFrame {
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWindowSizeDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingDL4JLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnApplyDL4J)))
+                            .addComponent(lblWindowSizeDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIterationsDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlSettingDL4JLayout.setVerticalGroup(
@@ -423,7 +443,13 @@ public class MainFram extends javax.swing.JFrame {
                     .addComponent(txtDL4JWindowSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblWindowSizeDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addGroup(pnlSettingDL4JLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIterations)
+                    .addComponent(txtDL4JIterations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIterationsDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btnApplyDL4J)
                 .addContainerGap())
         );
@@ -495,7 +521,7 @@ public class MainFram extends javax.swing.JFrame {
                 .addComponent(rdbStemmingPreProcess)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
                 .addComponent(btnApplyDL4JTokenize)
                 .addContainerGap())
         );
@@ -523,7 +549,7 @@ public class MainFram extends javax.swing.JFrame {
             .addGroup(pnlSettingGuiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tgbJavaLookFeel)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(518, Short.MAX_VALUE))
         );
 
         jtpSettings.addTab("GUI", pnlSettingGui);
@@ -540,6 +566,56 @@ public class MainFram extends javax.swing.JFrame {
         );
 
         jtpMain.addTab("Settings", pnlSettings);
+
+        jtaTestText.setColumns(20);
+        jtaTestText.setRows(5);
+        jScrollPane1.setViewportView(jtaTestText);
+
+        btnTestText.setText("Test");
+        btnTestText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestTextActionPerformed(evt);
+            }
+        });
+
+        txaLogTestText.setColumns(20);
+        txaLogTestText.setRows(5);
+        jScrollPane4.setViewportView(txaLogTestText);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnTestText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addGap(222, 222, 222)
+                .addComponent(btnTestText)
+                .addGap(16, 16, 16))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(327, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58)))
+        );
+
+        jtpMain.addTab("Test Text", jPanel2);
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.jpg"))); // NOI18N
 
@@ -613,6 +689,10 @@ public class MainFram extends javax.swing.JFrame {
         btnApplyDL4JTokenizeOnClick();
     }//GEN-LAST:event_btnApplyDL4JTokenizeActionPerformed
 
+    private void btnTestTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestTextActionPerformed
+        btnTestTextClicked(evt);
+    }//GEN-LAST:event_btnTestTextActionPerformed
+
     /**
      * @param args the command line arguments
      * @throws FileNotFoundException
@@ -660,6 +740,7 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JButton btnDirectory;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnStartTraining;
+    private javax.swing.JButton btnTestText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -679,11 +760,17 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jtaTestText;
     private javax.swing.JTabbedPane jtpMain;
     private javax.swing.JTabbedPane jtpSettings;
     private javax.swing.JLabel lblDataDir;
+    private javax.swing.JLabel lblIterations;
+    private javax.swing.JLabel lblIterationsDes;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblTrainingDir;
     private javax.swing.JLabel lblWindowSize;
@@ -699,11 +786,13 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbCommonPreProcess;
     private javax.swing.JRadioButton rdbStemmingPreProcess;
     private javax.swing.JToggleButton tgbJavaLookFeel;
+    private javax.swing.JTextArea txaLogTestText;
     private javax.swing.JTextArea txaLogTokenize;
     private javax.swing.JTextArea txaLogTrain;
     private javax.swing.JTextField txtAkkaThreads;
     private javax.swing.JTextField txtDL4JBatchSize;
     private javax.swing.JTextField txtDL4JEpochs;
+    private javax.swing.JTextField txtDL4JIterations;
     private javax.swing.JTextField txtDL4JLayerSize;
     private javax.swing.JTextField txtDL4JLearningRate;
     private javax.swing.JTextField txtDL4JMinWordFrequency;
@@ -726,6 +815,7 @@ public class MainFram extends javax.swing.JFrame {
         txaLogTokenize.setEditable(false);
         txaLogTrain.setEditable(false);
         jtpMain.setEnabledAt(1, false);
+        jtpMain.setEnabledAt(3, false);
 
         Image img = GuiUtils.getIcon();
         setIconImage(img);
@@ -733,9 +823,9 @@ public class MainFram extends javax.swing.JFrame {
         list.add(img);
         setIconImages(list);
         
-        lblWindowSize.setVisible(false);
-        lblWindowSizeDes.setVisible(false);
-        txtDL4JWindowSize.setVisible(false);
+        //lblWindowSize.setVisible(false);
+        //lblWindowSizeDes.setVisible(false);
+        //txtDL4JWindowSize.setVisible(false);
     }
 
     private void logTokenize(String message) {
@@ -744,6 +834,10 @@ public class MainFram extends javax.swing.JFrame {
 
     private void logClassify(String message) {
         txaLogTrain.append(message + "\n");
+    }
+    
+    private void logTestText(String message) {
+        txaLogTestText.append(message + "\n");
     }
 
     private void btnTrainingDirectoryOnClick(ActionEvent evt) {
@@ -801,6 +895,7 @@ public class MainFram extends javax.swing.JFrame {
         prgLoad.setIndeterminate(true);
         prgTraining.setIndeterminate(true);
         jtpMain.setEnabledAt(1, false);
+        jtpMain.setEnabledAt(3, false);
         btnStartTraining.setEnabled(false);
         btnLoad.setEnabled(false);
         btnDirectory.setEnabled(false);
@@ -813,12 +908,14 @@ public class MainFram extends javax.swing.JFrame {
         setEnabled(true);
         btnDirectory.setEnabled(true);
         jtpMain.setEnabledAt(1, true);
+        jtpMain.setEnabledAt(3, true);
     }
 
     private void btnStartTrainingOnClick(ActionEvent evt) {
         doTraining();
     }
 
+    /*
     private void settingComponentsEventHandlers() {
 
         txtSparkExecutors.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
@@ -884,7 +981,8 @@ public class MainFram extends javax.swing.JFrame {
             }
         }));
     }
-
+    */
+    
     private void populateSettingValues(Setting setting) {
         txtSparkExecutors.setText(setting.getSparkExecutors() + "");
         txtAkkaThreads.setText(setting.getSparkSkkaThreads() + "");
@@ -904,6 +1002,8 @@ public class MainFram extends javax.swing.JFrame {
         } else {
             rdbCommonPreProcess.setSelected(true);
         }
+        
+        txtDL4JIterations.setText(setting.getDl4jIterations() + "");
     }
 
     private void setEventHandlers() {
@@ -948,7 +1048,7 @@ public class MainFram extends javax.swing.JFrame {
                         enableAll();
 
                         //if (shots == 2) {
-                            showBestResult(result);
+                            showBestResult(result[0]);
                         //}
                     }
                 } catch (Exception ex) {
@@ -965,6 +1065,7 @@ public class MainFram extends javax.swing.JFrame {
 
     private SparkConf createSparkConf(Setting s) {
         SparkConf sparkConf = new SparkConf();
+        //sparkConf.setMaster("spark://192.168.0.200:7077");
         sparkConf.setMaster("local[" + s.getSparkExecutors() + "]");
         sparkConf.setAppName("DeepSparkText");
         sparkConf.set("spark.akka.threads", "" + s.getSparkSkkaThreads());
@@ -1031,6 +1132,7 @@ public class MainFram extends javax.swing.JFrame {
 
                     enableAll();
                     jtpMain.setEnabledAt(1, true);
+                    jtpMain.setEnabledAt(3, true);
                     btnStartTraining.setEnabled(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -1061,7 +1163,8 @@ public class MainFram extends javax.swing.JFrame {
             setting.setDl4jLearningRate(Double.parseDouble(txtDL4JLearningRate.getText()));
             setting.setDl4jMinWordFrequency(Integer.parseInt(txtDL4JMinWordFrequency.getText()));
             setting.setDl4jWindowSize(Integer.parseInt(txtDL4JWindowSize.getText()));
-
+            setting.setDl4jIterations(Integer.parseInt(txtDL4JIterations.getText()));
+            
             JOptionPane.showMessageDialog(this, "New settings applied.", "Info", JOptionPane.INFORMATION_MESSAGE, GuiUtils.getInfoIcon());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Enter numeric values!", "Error", JOptionPane.WARNING_MESSAGE, GuiUtils.getWarningIcon());
@@ -1073,8 +1176,8 @@ public class MainFram extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "New settings applied.", "Info", JOptionPane.INFORMATION_MESSAGE, GuiUtils.getInfoIcon());
     }
 
-    private void showBestResult(Evaluation[] result) {
-        Evaluation best = result[0];
+    private void showBestResult(Evaluation result) {
+        Evaluation best = result;
 
         /*
         if (result[1].accuracy() > best.accuracy()) {
@@ -1092,5 +1195,37 @@ public class MainFram extends javax.swing.JFrame {
         textResult.append("Accuracy: ").append(best.accuracy());
 
         logClassify(textResult.toString());
+    }
+
+    private void btnTestTextClicked(ActionEvent evt) {
+        logTestText(setting.toString()); 
+        
+        try {
+            new Thread(() -> {
+                try {                    
+                        disableAll();
+                        long startTime = System.currentTimeMillis();
+                        
+                        logClassify("Testing text...");
+                        textTesult = app.checkUnlabeledData(txaLogTestText.getText());
+
+                        long endTime = System.currentTimeMillis();
+                        logClassify("Time: " + millisecondsToMins(endTime - startTime));                        
+                        enableAll();
+
+                        
+                        showBestResult(textTesult);
+                        
+                    
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+
+                }
+            }).start();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, GuiUtils.getErrorIcon());
+            ex.printStackTrace();
+        }
     }
 }

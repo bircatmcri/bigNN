@@ -11,13 +11,14 @@ public class Setting {
     private int dl4jEpochs;
     private TokenPreProcessType tokenPreProcessType;
     private int dl4jWindowSize;
+    private int dl4jIterations;
 
     public Setting() {
     }
 
     public Setting(int sparkExecutors, int sparkSkkaThreads, double dl4jLearningRate, int dl4jBatchSize, int dl4jMinWordFrequency,
             int dl4jLayerSize, int dl4jEpochs, TokenPreProcessType tokenPreProcessType,
-            int dl4jWindowSize) {
+            int dl4jWindowSize, int dl4jIterations) {
         this.sparkExecutors = sparkExecutors;
         this.sparkSkkaThreads = sparkSkkaThreads;
         this.dl4jLearningRate = dl4jLearningRate;
@@ -27,6 +28,7 @@ public class Setting {
         this.dl4jEpochs = dl4jEpochs;
         this.tokenPreProcessType = tokenPreProcessType;
         this.dl4jWindowSize = dl4jWindowSize;
+        this.dl4jIterations = dl4jIterations;
     }
 
     public static Setting makeDefault() {
@@ -49,6 +51,7 @@ public class Setting {
         result.setSparkExecutors(cores);
         result.setSparkSkkaThreads(cores);
         result.setTokenPreProcessType(TokenPreProcessType.COMMON);
+        result.setDl4jIterations(1);
         
         return result;
     }
@@ -73,9 +76,9 @@ public class Setting {
 
     @Override
     public String toString() {
-        return "Setting: " + "spark executors=" + sparkExecutors + ", spark akka threads=" + sparkSkkaThreads + ", learning rate=" + dl4jLearningRate + ", batch size=" + dl4jBatchSize + ", min word frequency=" + dl4jMinWordFrequency + "%, layer size=" + dl4jLayerSize + ", epochs=" + dl4jEpochs + ", token pre-process=" + tokenPreProcessType + ", window size=" + dl4jWindowSize  + '}';
+        return "Setting{" + "sparkExecutors=" + sparkExecutors + ", sparkSkkaThreads=" + sparkSkkaThreads + ", dl4jLearningRate=" + dl4jLearningRate + ", dl4jBatchSize=" + dl4jBatchSize + ", dl4jMinWordFrequency=" + dl4jMinWordFrequency + ", dl4jLayerSize=" + dl4jLayerSize + ", dl4jEpochs=" + dl4jEpochs + ", tokenPreProcessType=" + tokenPreProcessType + ", dl4jWindowSize=" + dl4jWindowSize + ", dl4jIterations=" + dl4jIterations + '}';
     }
-    
+
     public int getSparkExecutors() {
         return sparkExecutors;
     }
@@ -132,4 +135,13 @@ public class Setting {
         this.dl4jEpochs = dl4jEpochs;
     }
 
+    public int getDl4jIterations() {
+        return dl4jIterations;
+    }
+
+    public void setDl4jIterations(int dl4jIterations) {
+        this.dl4jIterations = dl4jIterations;
+    }
+
+    
 }

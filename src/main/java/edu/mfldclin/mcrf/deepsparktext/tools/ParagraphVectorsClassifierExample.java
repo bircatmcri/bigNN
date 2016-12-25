@@ -21,6 +21,10 @@ import org.slf4j.LoggerFactory;
 import scala.Tuple2;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,14 +32,14 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import org.deeplearning4j.text.tokenization.tokenizer.TokenPreProcess;
-
 
 public class ParagraphVectorsClassifierExample {
 
     protected static final Logger log = LoggerFactory.getLogger(ParagraphVectorsClassifierExample.class);
     protected static final boolean APPLY_WEIGHT = true;
-    protected static final double WEIGHT = 1.4; 
+    protected static final double WEIGHT = 1.4;
     protected ParagraphVectors paragraphVectors;
     protected LabelAwareIterator iterator;
     protected TokenizerFactory tokenizerFactory;
@@ -56,28 +60,26 @@ public class ParagraphVectorsClassifierExample {
 
     public void Tokenize(JavaSparkContext sc) throws Exception {
         //final EndingPreProcessor preProcessor = new EndingPreProcessor();
-         TokenPreProcess tokenPreProcess = null;
+        TokenPreProcess tokenPreProcess = null;
 
         if (setting.getTokenPreProcessType() == TokenPreProcessType.COMMON) {
             tokenPreProcess = new ExtCommonPreProcessing();
-            		
-            
-            		
+
         } else if (setting.getTokenPreProcessType() == TokenPreProcessType.STEAMING) {
             tokenPreProcess = new ExtStemmPreProcessing();
         }
 
         tokenizerFactory = new DefaultTokenizerFactory(); //UimaTokenizerFactory
         tokenizerFactory.setTokenPreProcessor(tokenPreProcess);
-        
+
     }
-    
+
     public void makeParagraphVectors(JavaSparkContext sc) throws Exception {
         paragraphVectors = new ParagraphVectors.Builder()
                 .learningRate(setting.getDl4jLearningRate())
                 .minLearningRate(0.001)
                 .windowSize(setting.getDl4jWindowSize())
-                .iterations(3)
+                .iterations(setting.getDl4jIterations())
                 .batchSize(setting.getDl4jBatchSize())
                 .workers(4)
                 .stopWords(stopWords())
@@ -120,23 +122,22 @@ public class ParagraphVectorsClassifierExample {
             "whose", "wonder", "whole", "name", "ar", "hs", "zero", "whereafter", "viz", "usually", "truly", "tend", "tends",
             "someone", "presumably", "obviously", "overall", "auc", "not", "none", "namely", "we", "biomedical", "like",
             "hopefully", "hereby", "hardly", "following", "follow", "follows", "o-mar", "jan", "jan-", "especially", "either",
-            "even", "every", "during", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "pmid", 
-            "pmid:", "c-jun", "ct", "chk", "jnk-c-jun", "di", "euro", "italy", "milan", "norway", "n-", "oslo", "japan", "china", "uk", "dept", "department", "kpnac-jun", "jul-", "jul", "sep-", "sep", "sep-octm-m", "oct", "nov", "nov-", "oct-", 
+            "even", "every", "during", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "pmid",
+            "pmid:", "c-jun", "ct", "chk", "jnk-c-jun", "di", "euro", "italy", "milan", "norway", "n-", "oslo", "japan", "china", "uk", "dept", "department", "kpnac-jun", "jul-", "jul", "sep-", "sep", "sep-octm-m", "oct", "nov", "nov-", "oct-",
             "mar-apr-", "mar-apr", "pcmid", "purpose", "purposes", "aims", "aim", "consequently", "already", "appreciate", "thanks", "according",
-            "among", "unfortunately", "apr-", "zz", "ii", "ff", "aa", "bb", "cc", "dd", "ee", "ff", "jj", "hh", "ll", "kk", "gg", 
-            "rs", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "ww", "vv", "zz", "yy", "apr", "may-", "may", "unlikely", 
-            "mar-comment", "positive", "negative", "mar", "mar-", "-gauge", "jan-the", "feb", "feb-", "jan-feb", "jan-feb-", "august", "mar-", "mar", "aug", 
-            "aug-", "-aug", "mar-apr-", "apr-", "useful", "via", "@", "million", ".com", ".org", "suggest", "suggestion", "similar", "significantly", 
-            ".", "?", "!", ",", "+", "=", "also", "s", "t", "u", "w", "x", "y", "z", "dec", "dec-", ">", ",", "<", "-", ";", ":", "who's", 
-            "whom", "why", "why's", "will", "with", "without", 
-            "won't", "wont", "wouldnt", "would", "theyd", "theyll", "theyre", "theyve", "wouldn't", "you", "feb-comment", "you'd", "countries", " mainly", "you'll", "youre", "youve", "youll", "you're", "you've", "your", "yours", "yourself", "yourselves", 
-            "we've", "were", "weren't", "what", "what's", "hu", "wu", "qc", "cz", "li", "percent", "when", "when's", "where", "where's", "which", "while", 
-            "who", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", 
-            "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", 
-            "where", "where's", "something", "shouldn't", "so", "some", "such", "take", "than", "that", "that's", 
-            "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "theres", "these", "they", 
+            "among", "unfortunately", "apr-", "zz", "ii", "ff", "aa", "bb", "cc", "dd", "ee", "ff", "jj", "hh", "ll", "kk", "gg",
+            "rs", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "ww", "vv", "zz", "yy", "apr", "may-", "may", "unlikely",
+            "mar-comment", "positive", "negative", "mar", "mar-", "-gauge", "jan-the", "feb", "feb-", "jan-feb", "jan-feb-", "august", "mar-", "mar", "aug",
+            "aug-", "-aug", "mar-apr-", "apr-", "useful", "via", "@", "million", ".com", ".org", "suggest", "suggestion", "similar", "significantly",
+            ".", "?", "!", ",", "+", "=", "also", "s", "t", "u", "w", "x", "y", "z", "dec", "dec-", ">", ",", "<", "-", ";", ":", "who's",
+            "whom", "why", "why's", "will", "with", "without",
+            "won't", "wont", "wouldnt", "would", "theyd", "theyll", "theyre", "theyve", "wouldn't", "you", "feb-comment", "you'd", "countries", " mainly", "you'll", "youre", "youve", "youll", "you're", "you've", "your", "yours", "yourself", "yourselves",
+            "we've", "were", "weren't", "what", "what's", "hu", "wu", "qc", "cz", "li", "percent", "when", "when's", "where", "where's", "which", "while",
+            "who", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't",
+            "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's",
+            "where", "where's", "something", "shouldn't", "so", "some", "such", "take", "than", "that", "that's",
+            "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "theres", "these", "they",
             "they'd", "they'll", "they're", "they've"};
-  
 
         ArrayList<String> stopWords = new ArrayList<String>(Arrays.asList(stopWordsArray));
         return stopWords;
@@ -179,19 +180,15 @@ public class ParagraphVectorsClassifierExample {
           So, labels on these two documents are used like titles,
           just to visualize our classification done properly
              */
-            
-            
-             if (APPLY_WEIGHT) {
+            if (APPLY_WEIGHT) {
                 for (Pair<String, Double> score : scores) {
                     if (score.getFirst().equals(document.getLabel())) {
                         score.setSecond(score.getSecond() * WEIGHT);
                     }
                 }
             }
-             
-            
-            
-             System.out.println("Document '" + document.getLabel() + "' falls into the following categories: ");
+
+            System.out.println("Document '" + document.getLabel() + "' falls into the following categories: ");
             Collections.sort(scores, (Pair<String, Double> o1, Pair<String, Double> o2) -> {
                 if (o1.getSecond() > o2.getSecond()) {
                     return -1;
@@ -200,50 +197,140 @@ public class ParagraphVectorsClassifierExample {
                 } else {
                     return 0;
                 }
-            });            
+            });
 
             int i = 0;
             for (Pair<String, Double> score : scores) {
-                 System.out.println("        " + score.getFirst() + ": " + score.getSecond());
+                System.out.println("        " + score.getFirst() + ": " + score.getSecond());
 
                 if (i == 0) { // detected
                     if (document.getLabel().equalsIgnoreCase(score.getFirst())) {
                         // true positive 
-                        eval.incTruePositive(score.getFirst());                        
+                        eval.incTruePositive(score.getFirst());
                     } else {
                         // false positive
                         eval.incFalsePositive(score.getFirst());
-                        
+
                     }
                 } else { // not detected
                     if (document.getLabel().equalsIgnoreCase(score.getFirst())) {
                         // false negative 
                         eval.incFalseNegative(score.getFirst());
-                        
+
                     } else {
                         // true negative
                         eval.incTrueNegative(score.getFirst());
-                        
+
                     }
                 }
-                
+
                 i++;
             }
-        }        
-        
-        StringBuilder result = new StringBuilder("\n");        
-        
-        /*
+        }
+
+        StringBuilder result = new StringBuilder("\n");
+
         for (String label : labels) {
             result.append(label).append("\n")
-                    .append("\t").append("Precision: ").append(eval.precision(label)).append("\n")                    
+                    .append("\t").append("Precision: ").append(eval.precision(label)).append("\n")
                     .append("\t").append("Recall: ").append(eval.recall(label)).append("\n")
-            .append("\t").append("Accuracy: ").append(eval.accuracy(label)).append("\n");
-        }*/
-                
-        
+                    .append("\t").append("Accuracy: ").append(eval.accuracy(label)).append("\n");
+        }
+
         result.append("Precision: ").append(eval.precision() + "\n");
-        result.append("Recall: ").append(eval.recall() + "\n");        
+        result.append("Recall: ").append(eval.recall() + "\n");
+        result.append("Accuracy: ").append(eval.accuracy());
+        //eval.
+        return eval;
+    }
+
+    public Evaluation checkUnlabeledData(String stringData) throws IOException {
+        String dir = stringToDocument(stringData);
+
+        FileLabelAwareIterator unClassifiedIterator = new FileLabelAwareIterator.Builder()
+                .addSourceFolder(new File(dir))
+                .build();
+
+        MeansBuilder meansBuilder = new MeansBuilder(
+                (InMemoryLookupTable<VocabWord>) paragraphVectors.getLookupTable(),
+                tokenizerFactory);
+        LabelSeeker seeker = new LabelSeeker(iterator.getLabelsSource().getLabels(),
+                (InMemoryLookupTable<VocabWord>) paragraphVectors.getLookupTable());
+
+        List<String> labels = unClassifiedIterator.getLabelsSource().getLabels();
+        Evaluation eval = new Evaluation(labels);
+
+        //StringBuilder result = new StringBuilder();
+        while (unClassifiedIterator.hasNextDocument()) {
+            LabelledDocument document = unClassifiedIterator.nextDocument();
+            INDArray documentAsCentroid = meansBuilder.documentAsVector(document);
+            List<Pair<String, Double>> scores = seeker.getScores(documentAsCentroid);
+
+            /*
+          please note, document.getLabel() is used just to show which document we're looking at now,
+          as a substitute for printing out the whole document name.
+          So, labels on these two documents are used like titles,
+          just to visualize our classification done properly
+             */
+            if (APPLY_WEIGHT) {
+                for (Pair<String, Double> score : scores) {
+                    if (score.getFirst().equals(document.getLabel())) {
+                        score.setSecond(score.getSecond() * WEIGHT);
+                    }
+                }
+            }
+
+            System.out.println("Document '" + document.getLabel() + "' falls into the following categories: ");
+            Collections.sort(scores, (Pair<String, Double> o1, Pair<String, Double> o2) -> {
+                if (o1.getSecond() > o2.getSecond()) {
+                    return -1;
+                } else if (o1.getSecond() < o2.getSecond()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+
+            int i = 0;
+            for (Pair<String, Double> score : scores) {
+                System.out.println("        " + score.getFirst() + ": " + score.getSecond());
+
+                if (i == 0) { // detected
+                    if (document.getLabel().equalsIgnoreCase(score.getFirst())) {
+                        // true positive 
+                        eval.incTruePositive(score.getFirst());
+                    } else {
+                        // false positive
+                        eval.incFalsePositive(score.getFirst());
+
+                    }
+                } else { // not detected
+                    if (document.getLabel().equalsIgnoreCase(score.getFirst())) {
+                        // false negative 
+                        eval.incFalseNegative(score.getFirst());
+
+                    } else {
+                        // true negative
+                        eval.incTrueNegative(score.getFirst());
+
+                    }
+                }
+
+                i++;
+            }
+        }
+
+        StringBuilder result = new StringBuilder("\n");
+
+        for (String label : labels) {
+            result.append(label).append("\n")
+                    .append("\t").append("Precision: ").append(eval.precision(label)).append("\n")
+                    .append("\t").append("Recall: ").append(eval.recall(label)).append("\n")
+                    .append("\t").append("Accuracy: ").append(eval.accuracy(label)).append("\n");
+        }
+
+        result.append("Precision: ").append(eval.precision() + "\n");
+        result.append("Recall: ").append(eval.recall() + "\n");
         result.append("Accuracy: ").append(eval.accuracy());
         //eval.
         return eval;
@@ -306,6 +393,15 @@ public class ParagraphVectorsClassifierExample {
         int count = trainingDir.listFiles((File pathname) -> pathname.isFile()).length;
         int value = setting.getDl4jMinWordFrequency();
         return (count * value) / 100;
+    }
+
+    private String stringToDocument(String stringData) throws UnsupportedEncodingException, IOException {
+        String tmpDir = System.getProperty("java.io.tmpdir");
+        String dir = tmpDir + "/" + System.currentTimeMillis();
+        File file = new File(dir + "/doc");
+        file.mkdirs();
+        Files.write(Paths.get(dir + "/doc"), stringData.getBytes("UTF-8"), Op);
+        return dir;
     }
 
 }
