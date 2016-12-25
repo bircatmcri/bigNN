@@ -3,6 +3,7 @@ package edu.mfldclin.mcrf.deepsparktext.gui;
 import edu.mfldclin.mcrf.deepsparktext.setting.Setting;
 import edu.mfldclin.mcrf.deepsparktext.setting.SettingFieldChangeListener;
 import edu.mfldclin.mcrf.deepsparktext.setting.TokenPreProcessType;
+import edu.mfldclin.mcrf.deepsparktext.tools.ParagraphVectorsClassifierExample;
 import edu.mfldclin.mcrf.deepsparktext.tools.ThreeShotsTest;
 import edu.mfldclin.mcrf.deepsparktext.tools.e.Evaluation;
 import java.awt.Font;
@@ -34,9 +35,10 @@ public class MainFram extends javax.swing.JFrame {
     private JavaSparkContext sc;
     private Setting setting;
 
-    private ThreeShotsTest app;
+    //private ThreeShotsTest app;
+    private ParagraphVectorsClassifierExample app;
     private int shots;
-    private Evaluation[] result;
+    private Evaluation result;
     private Evaluation textTesult;
 
     /*
@@ -822,7 +824,7 @@ public class MainFram extends javax.swing.JFrame {
         List<Image> list = new ArrayList<>();
         list.add(img);
         setIconImages(list);
-        
+
         //lblWindowSize.setVisible(false);
         //lblWindowSizeDes.setVisible(false);
         //txtDL4JWindowSize.setVisible(false);
@@ -835,7 +837,7 @@ public class MainFram extends javax.swing.JFrame {
     private void logClassify(String message) {
         txaLogTrain.append(message + "\n");
     }
-    
+
     private void logTestText(String message) {
         txaLogTestText.append(message + "\n");
     }
@@ -886,7 +888,7 @@ public class MainFram extends javax.swing.JFrame {
                 btnLoad.setEnabled(true);
 
                 shots = 0;
-                result = new Evaluation[3];
+                //result = new Evaluation[3];
             }
         }
     }
@@ -981,8 +983,7 @@ public class MainFram extends javax.swing.JFrame {
             }
         }));
     }
-    */
-    
+     */
     private void populateSettingValues(Setting setting) {
         txtSparkExecutors.setText(setting.getSparkExecutors() + "");
         txtAkkaThreads.setText(setting.getSparkSkkaThreads() + "");
@@ -1002,7 +1003,7 @@ public class MainFram extends javax.swing.JFrame {
         } else {
             rdbCommonPreProcess.setSelected(true);
         }
-        
+
         txtDL4JIterations.setText(setting.getDl4jIterations() + "");
     }
 
@@ -1017,10 +1018,10 @@ public class MainFram extends javax.swing.JFrame {
         try {
             new Thread(() -> {
                 try {
-                    for (shots = 0; shots < 1; shots++) {
+                    //    for (shots = 0; shots < 1; shots++) {
 
-                        logClassify("Copying data to 'testing' directory. " /*+ (shots + 1)*/);
-
+                    logClassify("Copying data to 'testing' directory. " /*+ (shots + 1)*/);
+                    /*
                         switch (shots) {
                             case 0:
                                 app.copyFirstShot();
@@ -1032,25 +1033,25 @@ public class MainFram extends javax.swing.JFrame {
                                 //app.copyThirdShot();
                                 break;
                         }
+                     */
+                    disableAll();
+                    long startTime = System.currentTimeMillis();
 
-                        disableAll();
-                        long startTime = System.currentTimeMillis();
+                    //makeParagraphVectors(sc);
+                    logClassify("Training and Testing...");
+                    app.makeParagraphVectors(sc);
 
-                        //makeParagraphVectors(sc);
-                        logClassify("Training and Testing...");
-                        app.makeParagraphVectors(sc);
+                    result = app.checkUnlabeledData();
 
-                        result[shots] = app.checkUnlabeledData();
+                    long endTime = System.currentTimeMillis();
+                    logClassify("Time: " + millisecondsToMins(endTime - startTime));
+                    //logClassify(result);
+                    enableAll();
 
-                        long endTime = System.currentTimeMillis();
-                        logClassify("Time: " + millisecondsToMins(endTime - startTime));
-                        //logClassify(result);
-                        enableAll();
-
-                        //if (shots == 2) {
-                            showBestResult(result[0]);
-                        //}
-                    }
+                    //if (shots == 2) {
+                    showBestResult(result);
+                    //}
+                    //}
                 } catch (Exception ex) {
                     ex.printStackTrace();
 
@@ -1111,17 +1112,16 @@ public class MainFram extends javax.swing.JFrame {
             }
 
             if (shots == 0) {
-                app = new ThreeShotsTest(trainingDir, dataDir, setting, SIZE_OF_ONE_SHOT);
+                //app = new ThreeShotsTest(trainingDir, dataDir, setting, SIZE_OF_ONE_SHOT);
+                app = new ParagraphVectorsClassifierExample(trainingDir, dataDir, setting);
             }
 
             new Thread(() -> {
                 try {
                     disableAll();
 
-                    logTokenize("Copying data to 'temp' directory, from training directory. ");
-
-                    app.moveToTempAllThreeShots();
-
+                    //   logTokenize("Copying data to 'temp' directory, from training directory. ");
+                    // app.moveToTempAllThreeShots();
                     logTokenize("Loading and Tokenizing...");
                     long startTime = System.currentTimeMillis();
                     app.listIterator2(sc);
@@ -1164,7 +1164,7 @@ public class MainFram extends javax.swing.JFrame {
             setting.setDl4jMinWordFrequency(Integer.parseInt(txtDL4JMinWordFrequency.getText()));
             setting.setDl4jWindowSize(Integer.parseInt(txtDL4JWindowSize.getText()));
             setting.setDl4jIterations(Integer.parseInt(txtDL4JIterations.getText()));
-            
+
             JOptionPane.showMessageDialog(this, "New settings applied.", "Info", JOptionPane.INFORMATION_MESSAGE, GuiUtils.getInfoIcon());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Enter numeric values!", "Error", JOptionPane.WARNING_MESSAGE, GuiUtils.getWarningIcon());
@@ -1187,7 +1187,6 @@ public class MainFram extends javax.swing.JFrame {
         if (result[2].accuracy() > best.accuracy()) {
             best = result[2];
         }*/
-
         StringBuilder textResult = new StringBuilder("\n");
 
         textResult.append("Precision: ").append(best.precision() + "\n");
@@ -1198,25 +1197,23 @@ public class MainFram extends javax.swing.JFrame {
     }
 
     private void btnTestTextClicked(ActionEvent evt) {
-        logTestText(setting.toString()); 
-        
+        logTestText(setting.toString());
+
         try {
             new Thread(() -> {
-                try {                    
-                        disableAll();
-                        long startTime = System.currentTimeMillis();
-                        
-                        logClassify("Testing text...");
-                        textTesult = app.checkUnlabeledData(txaLogTestText.getText());
+                try {
+                    disableAll();
+                    long startTime = System.currentTimeMillis();
 
-                        long endTime = System.currentTimeMillis();
-                        logClassify("Time: " + millisecondsToMins(endTime - startTime));                        
-                        enableAll();
+                    logClassify("Testing text...");
+                    textTesult = app.checkUnlabeledData(txaLogTestText.getText());
 
-                        
-                        showBestResult(textTesult);
-                        
-                    
+                    long endTime = System.currentTimeMillis();
+                    logClassify("Time: " + millisecondsToMins(endTime - startTime));
+                    enableAll();
+
+                    showBestResult(textTesult);
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
 
