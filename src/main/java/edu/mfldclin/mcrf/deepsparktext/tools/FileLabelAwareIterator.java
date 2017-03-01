@@ -46,6 +46,15 @@ public class FileLabelAwareIterator implements LabelAwareIterator {
         return position.get() < files.size();
     }
 
+    /**
+     * added by ehsun
+     * @return 
+     */
+    public File getCurrentFile() {
+        int index = position.get() > 0 ? position.get() - 1 : 0;
+        return files.get(index);
+    }
+    
 
     @Override
     public LabelledDocument nextDocument() {

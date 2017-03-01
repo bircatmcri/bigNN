@@ -129,12 +129,6 @@ public class MainFram extends javax.swing.JFrame {
         btnApplyDL4JTokenize = new javax.swing.JButton();
         pnlSettingGui = new javax.swing.JPanel();
         tgbJavaLookFeel = new javax.swing.JToggleButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtaTestText = new javax.swing.JTextArea();
-        btnTestText = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txaLogTestText = new javax.swing.JTextArea();
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -569,56 +563,6 @@ public class MainFram extends javax.swing.JFrame {
 
         jtpMain.addTab("Settings", pnlSettings);
 
-        jtaTestText.setColumns(20);
-        jtaTestText.setRows(5);
-        jScrollPane1.setViewportView(jtaTestText);
-
-        btnTestText.setText("Test");
-        btnTestText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTestTextActionPerformed(evt);
-            }
-        });
-
-        txaLogTestText.setColumns(20);
-        txaLogTestText.setRows(5);
-        jScrollPane4.setViewportView(txaLogTestText);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnTestText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                .addGap(222, 222, 222)
-                .addComponent(btnTestText)
-                .addGap(16, 16, 16))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(327, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(58, 58, 58)))
-        );
-
-        jtpMain.addTab("Test Text", jPanel2);
-
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -643,31 +587,17 @@ public class MainFram extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStartTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartTrainingActionPerformed
-        btnStartTrainingOnClick(evt);
-    }//GEN-LAST:event_btnStartTrainingActionPerformed
-
-    private void btnDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDirectoryActionPerformed
-        btnTrainingDirectoryOnClick(evt);
-    }//GEN-LAST:event_btnDirectoryActionPerformed
-
-    private void txtSparkExecutorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSparkExecutorsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSparkExecutorsActionPerformed
-
     private void tgbJavaLookFeelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgbJavaLookFeelActionPerformed
         tgbJavaLookFeelOnClick(evt);
     }//GEN-LAST:event_tgbJavaLookFeelActionPerformed
 
+    private void btnApplyDL4JTokenizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyDL4JTokenizeActionPerformed
+        btnApplyDL4JTokenizeOnClick();
+    }//GEN-LAST:event_btnApplyDL4JTokenizeActionPerformed
+
     private void rdbStemmingPreProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbStemmingPreProcessActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbStemmingPreProcessActionPerformed
-
-    private void rdbCommonPreProcessStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbCommonPreProcessStateChanged
-        if (rdbCommonPreProcess.isSelected()) {
-            setting.setTokenPreProcessType(TokenPreProcessType.COMMON);
-        }
-    }//GEN-LAST:event_rdbCommonPreProcessStateChanged
 
     private void rdbStemmingPreProcessStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbStemmingPreProcessStateChanged
         if (rdbStemmingPreProcess.isSelected()) {
@@ -675,25 +605,35 @@ public class MainFram extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rdbStemmingPreProcessStateChanged
 
-    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
-        btnLoadOnClick(evt);
-    }//GEN-LAST:event_btnLoadActionPerformed
-
-    private void btnApplySparkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplySparkActionPerformed
-        btnApplySparkOnClick(evt);
-    }//GEN-LAST:event_btnApplySparkActionPerformed
+    private void rdbCommonPreProcessStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdbCommonPreProcessStateChanged
+        if (rdbCommonPreProcess.isSelected()) {
+            setting.setTokenPreProcessType(TokenPreProcessType.COMMON);
+        }
+    }//GEN-LAST:event_rdbCommonPreProcessStateChanged
 
     private void btnApplyDL4JActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyDL4JActionPerformed
         btnApplyDL4JOnClick(evt);
     }//GEN-LAST:event_btnApplyDL4JActionPerformed
 
-    private void btnApplyDL4JTokenizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyDL4JTokenizeActionPerformed
-        btnApplyDL4JTokenizeOnClick();
-    }//GEN-LAST:event_btnApplyDL4JTokenizeActionPerformed
+    private void btnApplySparkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplySparkActionPerformed
+        btnApplySparkOnClick(evt);
+    }//GEN-LAST:event_btnApplySparkActionPerformed
 
-    private void btnTestTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestTextActionPerformed
-        btnTestTextClicked(evt);
-    }//GEN-LAST:event_btnTestTextActionPerformed
+    private void txtSparkExecutorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSparkExecutorsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSparkExecutorsActionPerformed
+
+    private void btnStartTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartTrainingActionPerformed
+        btnStartTrainingOnClick(evt);
+    }//GEN-LAST:event_btnStartTrainingActionPerformed
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        btnLoadOnClick(evt);
+    }//GEN-LAST:event_btnLoadActionPerformed
+
+    private void btnDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDirectoryActionPerformed
+        btnTrainingDirectoryOnClick(evt);
+    }//GEN-LAST:event_btnDirectoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -742,7 +682,6 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JButton btnDirectory;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnStartTraining;
-    private javax.swing.JButton btnTestText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -762,12 +701,8 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jtaTestText;
     private javax.swing.JTabbedPane jtpMain;
     private javax.swing.JTabbedPane jtpSettings;
     private javax.swing.JLabel lblDataDir;
@@ -788,7 +723,6 @@ public class MainFram extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbCommonPreProcess;
     private javax.swing.JRadioButton rdbStemmingPreProcess;
     private javax.swing.JToggleButton tgbJavaLookFeel;
-    private javax.swing.JTextArea txaLogTestText;
     private javax.swing.JTextArea txaLogTokenize;
     private javax.swing.JTextArea txaLogTrain;
     private javax.swing.JTextField txtAkkaThreads;
@@ -816,8 +750,7 @@ public class MainFram extends javax.swing.JFrame {
 
         txaLogTokenize.setEditable(false);
         txaLogTrain.setEditable(false);
-        jtpMain.setEnabledAt(1, false);
-        jtpMain.setEnabledAt(3, false);
+        jtpMain.setEnabledAt(1, false);        
 
         Image img = GuiUtils.getIcon();
         setIconImage(img);
@@ -836,10 +769,6 @@ public class MainFram extends javax.swing.JFrame {
 
     private void logClassify(String message) {
         txaLogTrain.append(message + "\n");
-    }
-
-    private void logTestText(String message) {
-        txaLogTestText.append(message + "\n");
     }
 
     private void btnTrainingDirectoryOnClick(ActionEvent evt) {
@@ -896,8 +825,7 @@ public class MainFram extends javax.swing.JFrame {
     private void disableAll() {
         prgLoad.setIndeterminate(true);
         prgTraining.setIndeterminate(true);
-        jtpMain.setEnabledAt(1, false);
-        jtpMain.setEnabledAt(3, false);
+        jtpMain.setEnabledAt(1, false);        
         btnStartTraining.setEnabled(false);
         btnLoad.setEnabled(false);
         btnDirectory.setEnabled(false);
@@ -910,7 +838,6 @@ public class MainFram extends javax.swing.JFrame {
         setEnabled(true);
         btnDirectory.setEnabled(true);
         jtpMain.setEnabledAt(1, true);
-        jtpMain.setEnabledAt(3, true);
     }
 
     private void btnStartTrainingOnClick(ActionEvent evt) {
@@ -1020,7 +947,7 @@ public class MainFram extends javax.swing.JFrame {
                 try {
                     //    for (shots = 0; shots < 1; shots++) {
 
-                    logClassify("Copying data to 'testing' directory. " /*+ (shots + 1)*/);
+                    //logClassify("Copying data to 'testing' directory. " /*+ (shots + 1)*/);
                     /*
                         switch (shots) {
                             case 0:
@@ -1132,7 +1059,6 @@ public class MainFram extends javax.swing.JFrame {
 
                     enableAll();
                     jtpMain.setEnabledAt(1, true);
-                    jtpMain.setEnabledAt(3, true);
                     btnStartTraining.setEnabled(true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -1196,33 +1122,5 @@ public class MainFram extends javax.swing.JFrame {
         logClassify(textResult.toString());
     }
 
-    private void btnTestTextClicked(ActionEvent evt) {
-        logTestText(setting.toString());
-
-        try {
-            new Thread(() -> {
-                try {
-                    disableAll();
-                    long startTime = System.currentTimeMillis();
-
-                    logClassify("Testing text...");
-                    textTesult = app.checkUnlabeledData(txaLogTestText.getText());
-
-                    long endTime = System.currentTimeMillis();
-                    logClassify("Time: " + millisecondsToMins(endTime - startTime));
-                    enableAll();
-
-                    showBestResult(textTesult);
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-
-                }
-            }).start();
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, GuiUtils.getErrorIcon());
-            ex.printStackTrace();
-        }
-    }
+    
 }

@@ -169,8 +169,10 @@ public class ParagraphVectorsClassifierExample {
         Evaluation eval = new Evaluation(labels);
 
         //StringBuilder result = new StringBuilder();
+        
         while (unClassifiedIterator.hasNextDocument()) {
             LabelledDocument document = unClassifiedIterator.nextDocument();
+            File currentFile = unClassifiedIterator.getCurrentFile();
             INDArray documentAsCentroid = meansBuilder.documentAsVector(document);
             List<Pair<String, Double>> scores = seeker.getScores(documentAsCentroid);
 
@@ -188,7 +190,16 @@ public class ParagraphVectorsClassifierExample {
                 }
             }
 
-            System.out.println("Document '" + document.getLabel() + "' falls into the following categories: ");
+            File outputDir = new File(new File(dataDir.getParent()).getAbsolutePath() + "/output/" + document.getLabel() + "/");
+            File outputFile = new File (outputDir, currentFile.getName());
+            outputDir.mkdirs();
+            try {
+                Files.copy(currentFile.toPath(), outputFile.toPath());
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(ParagraphVectorsClassifierExample.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            System.out.println("Document: '" + document.getLabel() + "' which is the file: " + currentFile.getAbsolutePath() + " falls into the following categories: ");
             Collections.sort(scores, (Pair<String, Double> o1, Pair<String, Double> o2) -> {
                 if (o1.getSecond() > o2.getSecond()) {
                     return -1;
