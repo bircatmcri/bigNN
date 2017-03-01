@@ -189,15 +189,6 @@ public class ParagraphVectorsClassifierExample {
                     }
                 }
             }
-
-            File outputDir = new File(new File(dataDir.getParent()).getAbsolutePath() + "/output/" + document.getLabel() + "/");
-            File outputFile = new File (outputDir, currentFile.getName());
-            outputDir.mkdirs();
-            try {
-                Files.copy(currentFile.toPath(), outputFile.toPath());
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(ParagraphVectorsClassifierExample.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
             System.out.println("Document: '" + document.getLabel() + "' which is the file: " + currentFile.getAbsolutePath() + " falls into the following categories: ");
             Collections.sort(scores, (Pair<String, Double> o1, Pair<String, Double> o2) -> {
@@ -211,12 +202,15 @@ public class ParagraphVectorsClassifierExample {
             });
 
             int i = 0;
+            String correctLabel = "";
+            
             for (Pair<String, Double> score : scores) {
                 System.out.println("        " + score.getFirst() + ": " + score.getSecond());
 
                 if (i == 0) { // detected
+                    correctLabel = score.getFirst();
                     if (document.getLabel().equalsIgnoreCase(score.getFirst())) {
-                        // true positive 
+                        // true positive                         
                         eval.incTruePositive(score.getFirst());
                     } else {
                         // false positive
@@ -236,6 +230,16 @@ public class ParagraphVectorsClassifierExample {
                 }
 
                 i++;
+            }
+            
+            
+            File outputDir = new File(new File(dataDir.getParent()).getAbsolutePath() + "/output/" + correctLabel + "/");
+            File outputFile = new File (outputDir, currentFile.getName());
+            outputDir.mkdirs();
+            try {
+                Files.copy(currentFile.toPath(), outputFile.toPath());
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(ParagraphVectorsClassifierExample.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
