@@ -99,16 +99,23 @@ public class ParagraphVectorsClassifierExample {
         String[] stopWordsArray = {"a", "at", "the", "an", "of", "from", "the", "and", "when",
             "abstract", "as", "to", "most", "year", "age", "common", "with", "have", "is", "off", "about",
             "above", "however", "after", "again", "against", "all", "further", "for", "any", "are", "be", "because",
-            "been", "sometimes", "often", "pmc", "die", "types", "type", "back", "usually", "always", "sometime", "before", "being", "pattern", "patterns", "below", "study", "studies", "between", "both", "but", "by", "can", "could", "has", "have",
+            "been", "sometimes", "often", "pmc", "die", "types", "type", "back", "usually", "always", "sometime", "before", "being", 
+            "pattern", "patterns", "below", "study", "studies", "between", "both", "but", "by", "can", "could", "has", "have",
             "had", "better", "best", "doesnt", "dont", "didnt", "or", "he", "having", "her", "they", "background", "backgrounds", "method",
-            "conclusion", "small", "large", "big", "factor", "much", "factors", "generally", "cancerous", "tissues", "clinic", "hospital", "center", "malignant", "outcome", "surgery", "early", "conclusions", "cancer", "in", "normally", "treat", "treatment", "methods", "results", "result", "approach", "also", "allow",
-            "into", "x-ray", "xray", "organ", "organs", "is", "it", "its", "it's", "cells", "cell", "itself", "let's", "let", "me", "myslef", "no", "nor", "topic",
-            "not", "off", "vs", "hr", "out", "create", "creates", "stage", "other", "", "or", "another", "once", "our", "ours", "ourselves", "area",
+            "conclusion", "small", "large", "big", "factor", "much", "factors", "generally", "clinic", "hospital", "center", "malignant", 
+            "outcome", "surgery", "early", "conclusions", "cancer", "in", "normally", "methods", "results", "result", "approach", "also", 
+            "allow", "into", "x-ray", "xray", "organ", "organs", "is", "it", "its", "it's", "cells", "cell", "itself", "let's", "let", 
+            "me", "myslef", "no", "nor", "topic", "not", "off", "vs", "hr", "out", "create", "creates", "stage", "other", " ", "or", 
+            "another", "once", "our", "ours", "ourselves", "area",
             "out", "over", "own", "explain", "same", "she", "should", "so", "week", "weeks", "some", "such", "than", "that", "their",
             "these", "they", "those", "review", "primary", "their", "through", "slowly", "to", "tx", "under", "up", "until", "very", "was", "we",
-            "why", "with", "prior", "difficulty", "highlight", "trial", "accepting", "main", "major", "having", "be", "who", "grow", "whom", "place", "body", "ci", "%ci", "ratio", "cases", "case", "allows", "%", "anybody", "anyone", "patient", "patients", "among", "amongst",
-            "accordingly", "size", "anyways", "year", "years", "day", "days", "month", "months", "january", "february", "march", "april", "may", "june", "july", "august", "october", "november", "december", "author", "authors", "jyauthor", "houston", "treated", "occur", "pc-", "level", "successfully", "protocol", "protocols", "option", "options", "information", "patient", "patients", "anyway", "appropriate", "aside", "consider", "considering", "com",
-            "certain", "corresponding", "jama", "plos", "ki-", "tothe", "p=", "jpn", "patho", "bmj", "febs", "arch", "lett", "clin", "park", "methodology", "definitely", "different", "each", "every", "else", "et", "etc",
+            "why", "with", "prior", "difficulty", "highlight", "trial", "accepting", "main", "major", "having", "be", "who", "grow", "whom", "place", 
+            "body", "ci", "%ci", "ratio", "cases", "case", "allows", "%", "anybody", "anyone", "patient", "patients", "among", "amongst",
+            "accordingly", "size", "anyways", "year", "years", "day", "days", "month", "months", "january", "february", "march", "april", "may", 
+            "june", "july", "august", "october", "november", "december", "author", "authors", "jyauthor", "houston", "treated", "occur", "pc-", "level", 
+            "successfully", "protocol", "protocols", "option", "options", "information", "patient", "patients", "anyway", "appropriate", "aside", "consider", "considering", "com",
+            "certain", "corresponding", "jama", "plos", "ki-", "tothe", "p=", "jpn", "patho", "bmj", "febs", "arch", "lett", "clin", "park", 
+            "methodology", "definitely", "different", "each", "every", "else", "et", "etc",
             "exactly", "if", "area", "total", "gets", "get", "go", "pathol", "identify", "hematol", "br", "goes", "greetings", "how", "what", "where", "when", "immediate",
             "immediately", "instead", "including", "include", "includes", "insert", "-year", "indicate", "later", "late", "test", "testing", "latest", "low", "high", "serious",
             "seen", "she", "you", "aknowledge", "rate", "rates", "so", "something", "still", "soon", "very", "large", "thus",
@@ -130,7 +137,7 @@ public class ParagraphVectorsClassifierExample {
             "mar-comment", "positive", "negative", "mar", "mar-", "-gauge", "jan-the", "feb", "feb-", "jan-feb", "jan-feb-", "august", "mar-", "mar", "aug",
             "aug-", "-aug", "mar-apr-", "apr-", "useful", "via", "@", "million", ".com", ".org", "suggest", "suggestion", "similar", "significantly",
             ".", "?", "!", ",", "+", "=", "also", "s", "t", "u", "w", "x", "y", "z", "dec", "dec-", ">", ",", "<", "-", ";", ":", "who's",
-            "whom", "why", "why's", "will", "with", "without",
+            "whom", "why", "why's", "will", "with", "without", ")", "(",
             "won't", "wont", "wouldnt", "would", "theyd", "theyll", "theyre", "theyve", "wouldn't", "you", "feb-comment", "you'd", "countries", " mainly", "you'll", "youre", "youve", "youll", "you're", "you've", "your", "yours", "yourself", "yourselves",
             "we've", "were", "weren't", "what", "what's", "hu", "wu", "qc", "cz", "li", "percent", "when", "when's", "where", "where's", "which", "while",
             "who", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't",
@@ -142,7 +149,7 @@ public class ParagraphVectorsClassifierExample {
         ArrayList<String> stopWords = new ArrayList<String>(Arrays.asList(stopWordsArray));
         return stopWords;
     }
-
+    
     public Evaluation checkUnlabeledData() throws FileNotFoundException {
         /*
       At this point we assume that we have model built and we can check 
