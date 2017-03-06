@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.bignn.tools;
+package edu.mfldclin.mcrf.bignn.learning;
 
 import org.deeplearning4j.text.documentiterator.LabelAwareIterator;
 import org.deeplearning4j.text.documentiterator.LabelledDocument;

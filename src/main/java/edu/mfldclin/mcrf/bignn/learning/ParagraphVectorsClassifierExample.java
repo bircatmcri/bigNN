@@ -1,8 +1,8 @@
-package edu.mfldclin.mcrf.bignn.tools;
+package edu.mfldclin.mcrf.bignn.learning;
 
 import edu.mfldclin.mcrf.bignn.setting.Setting;
 import edu.mfldclin.mcrf.bignn.setting.TokenPreProcessType;
-import edu.mfldclin.mcrf.bignn.tools.e.Evaluation;
+import edu.mfldclin.mcrf.bignn.evaluation.Evaluation;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;

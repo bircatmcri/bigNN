@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.bignn.tools;
+package edu.mfldclin.mcrf.bignn.learning;
 
 import com.google.common.io.Files;
 import edu.mfldclin.mcrf.bignn.setting.Setting;

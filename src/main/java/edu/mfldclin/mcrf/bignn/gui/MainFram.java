@@ -2,8 +2,8 @@ package edu.mfldclin.mcrf.bignn.gui;
 
 import edu.mfldclin.mcrf.bignn.setting.Setting;
 import edu.mfldclin.mcrf.bignn.setting.TokenPreProcessType;
-import edu.mfldclin.mcrf.bignn.tools.ParagraphVectorsClassifierExample;
-import edu.mfldclin.mcrf.bignn.tools.e.Evaluation;
+import edu.mfldclin.mcrf.bignn.learning.ParagraphVectorsClassifierExample;
+import edu.mfldclin.mcrf.bignn.evaluation.Evaluation;
 import edu.mfldclin.mcrf.deepsparktext.gui.GuiUtils;
 import java.awt.Font;
 import java.awt.Image;

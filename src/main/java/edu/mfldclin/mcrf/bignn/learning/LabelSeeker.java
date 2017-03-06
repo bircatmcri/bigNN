@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.bignn.tools;
+package edu.mfldclin.mcrf.bignn.learning;
 
 import lombok.NonNull;
 import org.deeplearning4j.berkeley.Pair;

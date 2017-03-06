@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.bignn.tools;
+package edu.mfldclin.mcrf.bignn.learning;
 
 import java.io.File;
 
