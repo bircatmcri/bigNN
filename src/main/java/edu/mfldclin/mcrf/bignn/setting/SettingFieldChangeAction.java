@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.deepsparktext.setting;
+package edu.mfldclin.mcrf.bignn.setting;
 
 import javax.swing.event.DocumentEvent;
 

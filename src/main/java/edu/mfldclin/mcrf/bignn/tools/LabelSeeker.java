@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.deepsparktext.tools;
+package edu.mfldclin.mcrf.bignn.tools;
 
 import lombok.NonNull;
 import org.deeplearning4j.berkeley.Pair;
@@ -11,25 +11,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is primitive seeker for nearest labels.
- * It's used instead of basic wordsNearest method because for ParagraphVectors
- * only labels should be taken into account, not individual words
+ * This is primitive seeker for nearest labels. It's used instead of basic
+ * wordsNearest method because for ParagraphVectors only labels should be taken
+ * into account, not individual words
  *
  * @author raver119@gmail.com
  */
 public class LabelSeeker {
+
     private List<String> labelsUsed;
     private InMemoryLookupTable<VocabWord> lookupTable;
 
     public LabelSeeker(@NonNull List<String> labelsUsed, @NonNull InMemoryLookupTable<VocabWord> lookupTable) {
-        if (labelsUsed.isEmpty()) throw new IllegalStateException("You can't have 0 labels used for ParagraphVectors");
+        if (labelsUsed.isEmpty()) {
+            throw new IllegalStateException("You can't have 0 labels used for ParagraphVectors");
+        }
         this.lookupTable = lookupTable;
         this.labelsUsed = labelsUsed;
     }
 
     /**
-     * This method accepts vector, that represents any document,
-     * and returns distances between this document, and previously trained categories
+     * This method accepts vector, that represents any document, and returns
+     * distances between this document, and previously trained categories
      *
      * @return
      */
@@ -37,7 +40,9 @@ public class LabelSeeker {
         List<Pair<String, Double>> result = new ArrayList<>();
         for (String label : labelsUsed) {
             INDArray vecLabel = lookupTable.vector(label);
-            if (vecLabel == null) throw new IllegalStateException("Label '" + label + "' has no known vector!");
+            if (vecLabel == null) {
+                throw new IllegalStateException("Label '" + label + "' has no known vector!");
+            }
 
             double sim = Transforms.cosineSim(vector, vecLabel);
             result.add(new Pair<String, Double>(label, sim));

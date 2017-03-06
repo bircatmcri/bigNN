@@ -117,5 +117,12 @@
             <version>${dl4j.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.seaglasslookandfeel/seaglasslookandfeel -->
+        <dependency>
+            <groupId>com.seaglasslookandfeel</groupId>
+            <artifactId>seaglasslookandfeel</artifactId>
+            <version>0.2</version>
+        </dependency>
+
     </dependencies>
 </project>

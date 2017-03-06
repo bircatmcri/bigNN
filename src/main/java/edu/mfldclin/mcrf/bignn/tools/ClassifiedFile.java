@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.deepsparktext.tools;
+package edu.mfldclin.mcrf.bignn.tools;
 
 import java.io.File;
 

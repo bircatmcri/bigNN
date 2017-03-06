@@ -1,7 +1,6 @@
-package edu.mfldclin.mcrf.deepsparktext.tools.e;
+package edu.mfldclin.mcrf.bignn.tools.e;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,11 +59,11 @@ public class Evaluation {
         if (tp == null) {
             tp = 0.0;
         }
-        
+
         if (fn == null) {
             fn = 0.0;
         }
-        
+
         return tp / (tp + fn);
     }
 
@@ -75,11 +74,11 @@ public class Evaluation {
         if (tp == null) {
             tp = 0.0;
         }
-        
+
         if (fp == null) {
             fp = 0.0;
         }
-        
+
         return tp / (tp + fp);
     }
 
@@ -92,19 +91,19 @@ public class Evaluation {
         if (tp == null) {
             tp = 0.0;
         }
-        
+
         if (fn == null) {
             fn = 0.0;
         }
-        
+
         if (tn == null) {
             tn = 0.0;
         }
-        
+
         if (fp == null) {
             fp = 0.0;
         }
-        
+
         return (tp + tn) / (tp + tn + fp + fn);
     }
 

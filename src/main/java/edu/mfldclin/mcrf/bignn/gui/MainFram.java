@@ -1,11 +1,10 @@
-package edu.mfldclin.mcrf.deepsparktext.gui;
+package edu.mfldclin.mcrf.bignn.gui;
 
-import edu.mfldclin.mcrf.deepsparktext.setting.Setting;
-import edu.mfldclin.mcrf.deepsparktext.setting.SettingFieldChangeListener;
-import edu.mfldclin.mcrf.deepsparktext.setting.TokenPreProcessType;
-import edu.mfldclin.mcrf.deepsparktext.tools.ParagraphVectorsClassifierExample;
-import edu.mfldclin.mcrf.deepsparktext.tools.ThreeShotsTest;
-import edu.mfldclin.mcrf.deepsparktext.tools.e.Evaluation;
+import edu.mfldclin.mcrf.bignn.setting.Setting;
+import edu.mfldclin.mcrf.bignn.setting.TokenPreProcessType;
+import edu.mfldclin.mcrf.bignn.tools.ParagraphVectorsClassifierExample;
+import edu.mfldclin.mcrf.bignn.tools.e.Evaluation;
+import edu.mfldclin.mcrf.deepsparktext.gui.GuiUtils;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -450,7 +449,7 @@ public class MainFram extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jtpSettings.addTab("Deep Learning", pnlSettingDL4J);
+        jtpSettings.addTab("Neural Network Configuration", pnlSettingDL4J);
 
         btgTokenizePreProcess.add(rdbCommonPreProcess);
         rdbCommonPreProcess.setText("Common");
@@ -750,7 +749,7 @@ public class MainFram extends javax.swing.JFrame {
 
         txaLogTokenize.setEditable(false);
         txaLogTrain.setEditable(false);
-        jtpMain.setEnabledAt(1, false);        
+        jtpMain.setEnabledAt(1, false);
 
         Image img = GuiUtils.getIcon();
         setIconImage(img);
@@ -825,7 +824,7 @@ public class MainFram extends javax.swing.JFrame {
     private void disableAll() {
         prgLoad.setIndeterminate(true);
         prgTraining.setIndeterminate(true);
-        jtpMain.setEnabledAt(1, false);        
+        jtpMain.setEnabledAt(1, false);
         btnStartTraining.setEnabled(false);
         btnLoad.setEnabled(false);
         btnDirectory.setEnabled(false);
@@ -1122,5 +1121,4 @@ public class MainFram extends javax.swing.JFrame {
         logClassify(textResult.toString());
     }
 
-    
 }

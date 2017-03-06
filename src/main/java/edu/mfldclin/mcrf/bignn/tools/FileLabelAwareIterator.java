@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.deepsparktext.tools;
+package edu.mfldclin.mcrf.bignn.tools;
 
 import lombok.NonNull;
 import org.deeplearning4j.text.documentiterator.LabelAwareIterator;

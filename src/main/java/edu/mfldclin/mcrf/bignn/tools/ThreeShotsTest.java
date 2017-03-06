@@ -1,7 +1,7 @@
-package edu.mfldclin.mcrf.deepsparktext.tools;
+package edu.mfldclin.mcrf.bignn.tools;
 
 import com.google.common.io.Files;
-import edu.mfldclin.mcrf.deepsparktext.setting.Setting;
+import edu.mfldclin.mcrf.bignn.setting.Setting;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
