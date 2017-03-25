@@ -348,7 +348,7 @@ public class MainFram extends javax.swing.JFrame {
         lblIterations.setText("Iterations:");
 
         lblIterationsDes.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        lblIterationsDes.setText("<html>bla bla bla</html>");
+        lblIterationsDes.setText("It defines number of iterations done for each mini-batch during a training");
 
         javax.swing.GroupLayout pnlSettingDL4JLayout = new javax.swing.GroupLayout(pnlSettingDL4J);
         pnlSettingDL4J.setLayout(pnlSettingDL4JLayout);
@@ -394,7 +394,7 @@ public class MainFram extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblWindowSizeDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIterationsDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblIterationsDes))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -443,7 +443,7 @@ public class MainFram extends javax.swing.JFrame {
                     .addComponent(lblIterations)
                     .addComponent(txtDL4JIterations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIterationsDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblIterationsDes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btnApplyDL4J)
                 .addContainerGap())

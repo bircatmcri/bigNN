@@ -602,7 +602,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="10" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;bla bla bla&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="It defines number of iterations done for each mini-batch during a training"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDL4JIterations">
