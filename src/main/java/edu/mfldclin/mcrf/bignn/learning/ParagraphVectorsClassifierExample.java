@@ -3,6 +3,7 @@ package edu.mfldclin.mcrf.bignn.learning;
 import edu.mfldclin.mcrf.bignn.setting.Setting;
 import edu.mfldclin.mcrf.bignn.setting.TokenPreProcessType;
 import edu.mfldclin.mcrf.bignn.evaluation.Evaluation;
+import java.io.BufferedReader;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -21,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import scala.Tuple2;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
@@ -46,6 +48,7 @@ public class ParagraphVectorsClassifierExample {
 
     protected final File trainingDir, dataDir;
     protected final Setting setting;
+    private String STOP_WORDS_FILE = "stopwords.txt";
 
     public ParagraphVectorsClassifierExample(File trainingDir, File dataDir, Setting setting) {
         this.trainingDir = trainingDir;
@@ -96,6 +99,7 @@ public class ParagraphVectorsClassifierExample {
     }
 
     private ArrayList<String> stopWords() {
+        /*
         String[] stopWordsArray = {"a", "at", "the", "an", "of", "from", "the", "and", "when",
             "abstract", "as", "to", "most", "year", "age", "common", "with", "have", "is", "off", "about",
             "above", "however", "after", "again", "against", "all", "further", "for", "any", "are", "be", "because",
@@ -145,8 +149,19 @@ public class ParagraphVectorsClassifierExample {
             "where", "where's", "something", "shouldn't", "so", "some", "such", "take", "than", "that", "that's",
             "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "theres", "these", "they",
             "they'd", "they'll", "they're", "they've"};
-
-        ArrayList<String> stopWords = new ArrayList<String>(Arrays.asList(stopWordsArray));
+        */
+        File stopWordsFile = new File(dataDir.getParentFile(), STOP_WORDS_FILE);
+        
+        ArrayList<String> stopWords = new ArrayList<>();
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader(stopWordsFile))) {
+            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                stopWords.addAll(Arrays.asList(line.split(",")));
+            }
+        } catch (IOException ex) {
+            System.out.println("Error in reading file: " + stopWordsFile.getAbsolutePath());
+        }
+        
         return stopWords;
     }
     
