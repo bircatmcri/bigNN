@@ -4,7 +4,7 @@ import edu.mfldclin.mcrf.bignn.setting.Setting;
 import edu.mfldclin.mcrf.bignn.setting.TokenPreProcessType;
 import edu.mfldclin.mcrf.bignn.learning.ParagraphVectorsClassifierExample;
 import edu.mfldclin.mcrf.bignn.evaluation.Evaluation;
-import edu.mfldclin.mcrf.deepsparktext.gui.GuiUtils;
+import edu.mfldclin.mcrf.bignn.gui.GuiUtils;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -40,13 +40,7 @@ public class MainFram extends javax.swing.JFrame {
     private Evaluation result;
     private Evaluation textTesult;
 
-    /*
-    private ParagraphVectors paragraphVectors;
-    private LabelAwareIterator iterator;
-    private TokenizerFactory tokenizerFactory;*/
-    /**
-     * Creates new form MainFram
-     */
+    
     public MainFram() {
 
         try {
@@ -58,7 +52,7 @@ public class MainFram extends javax.swing.JFrame {
         initComponents();
         myInitComponents();
         setEventHandlers();
-        //settingComponentsEventHandlers();
+        
     }
 
     /**
@@ -562,7 +556,7 @@ public class MainFram extends javax.swing.JFrame {
 
         jtpMain.addTab("Settings", pnlSettings);
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_small.jpg"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -756,10 +750,6 @@ public class MainFram extends javax.swing.JFrame {
         List<Image> list = new ArrayList<>();
         list.add(img);
         setIconImages(list);
-
-        //lblWindowSize.setVisible(false);
-        //lblWindowSizeDes.setVisible(false);
-        //txtDL4JWindowSize.setVisible(false);
     }
 
     private void logTokenize(String message) {
@@ -843,73 +833,7 @@ public class MainFram extends javax.swing.JFrame {
         doTraining();
     }
 
-    /*
-    private void settingComponentsEventHandlers() {
-
-        txtSparkExecutors.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtSparkExecutors.getText());
-                setting.setSparkExecutors(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtAkkaThreads.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtAkkaThreads.getText());
-                setting.setSparkSkkaThreads(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtDL4JBatchSize.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtDL4JBatchSize.getText());
-                setting.setDl4jBatchSize(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtDL4JEpochs.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtDL4JEpochs.getText());
-                setting.setDl4jEpochs(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtDL4JLayerSize.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtDL4JLayerSize.getText());
-                setting.setDl4jLayerSize(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtDL4JLearningRate.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                double value = Double.parseDouble(txtDL4JLearningRate.getText());
-                setting.setDl4jLearningRate(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-
-        txtDL4JMinWordFrequency.getDocument().addDocumentListener(new SettingFieldChangeListener(e -> {
-            try {
-                int value = Integer.parseInt(txtDL4JMinWordFrequency.getText());
-                setting.setDl4jMinWordFrequency(value);
-            } catch (NumberFormatException ex) {
-                //ex.printStackTrace();
-            }
-        }));
-    }
-     */
+   
     private void populateSettingValues(Setting setting) {
         txtSparkExecutors.setText(setting.getSparkExecutors() + "");
         txtAkkaThreads.setText(setting.getSparkSkkaThreads() + "");
@@ -944,22 +868,6 @@ public class MainFram extends javax.swing.JFrame {
         try {
             new Thread(() -> {
                 try {
-                    //    for (shots = 0; shots < 1; shots++) {
-
-                    //logClassify("Copying data to 'testing' directory. " /*+ (shots + 1)*/);
-                    /*
-                        switch (shots) {
-                            case 0:
-                                app.copyFirstShot();
-                                break;
-                            case 1:
-                                //app.copySecondShot();
-                                break;
-                            case 2:
-                                //app.copyThirdShot();
-                                break;
-                        }
-                     */
                     disableAll();
                     long startTime = System.currentTimeMillis();
 
@@ -1038,16 +946,12 @@ public class MainFram extends javax.swing.JFrame {
             }
 
             if (shots == 0) {
-                //app = new ThreeShotsTest(trainingDir, dataDir, setting, SIZE_OF_ONE_SHOT);
                 app = new ParagraphVectorsClassifierExample(trainingDir, dataDir, setting);
             }
 
             new Thread(() -> {
                 try {
                     disableAll();
-
-                    //   logTokenize("Copying data to 'temp' directory, from training directory. ");
-                    // app.moveToTempAllThreeShots();
                     logTokenize("Loading and Tokenizing...");
                     long startTime = System.currentTimeMillis();
                     app.listIterator2(sc);
@@ -1103,21 +1007,10 @@ public class MainFram extends javax.swing.JFrame {
 
     private void showBestResult(Evaluation result) {
         Evaluation best = result;
-
-        /*
-        if (result[1].accuracy() > best.accuracy()) {
-            best = result[1];
-        }
-
-        if (result[2].accuracy() > best.accuracy()) {
-            best = result[2];
-        }*/
         StringBuilder textResult = new StringBuilder("\n");
-
         textResult.append("Precision: ").append(best.precision() + "\n");
         textResult.append("Recall: ").append(best.recall() + "\n");
         textResult.append("Accuracy: ").append(best.accuracy());
-
         logClassify(textResult.toString());
     }
 
