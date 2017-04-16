@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Random;
 import org.apache.commons.io.FileUtils;
 
-/**
- *
+/*
  * @author Ehsun Behravesh <ehsun.behravesh@openet.com>
  */
 public class ThreeShotsTest extends ParagraphVectorsClassifierExample {
@@ -48,53 +47,7 @@ public class ThreeShotsTest extends ParagraphVectorsClassifierExample {
         int s=1;
     }
 
-    /*
-    public void copySecondShot() throws IOException {
-        cleanDataDir();
-
-        for (ClassifiedFile file : secondShot) {
-
-            File newFile = new File(dataDir.getAbsolutePath() + "/" + file.getClassName());
-            boolean mkdirs = true;
-            if (!newFile.exists()) {
-                newFile.mkdirs();
-            }
-
-            newFile = new File(newFile, file.getFile().getName());
-            if (mkdirs) {
-                Files.move(file.getFile(), newFile);
-                file.setFile(newFile);
-            } else if (!mkdirs) {
-                throw new IOException("Can not create dirs. " + newFile.getAbsolutePath());
-            }
-        }
-        
-        int v = 10;
-    }
-
-    public void copyThirdShot() throws IOException {
-        cleanDataDir();
-
-        for (ClassifiedFile file : thirdShot) {
-
-            File newFile = new File(dataDir.getAbsolutePath() + "/" + file.getClassName());
-            boolean mkdirs = true;
-            if (!newFile.exists()) {
-                newFile.mkdirs();
-            }
-
-            newFile = new File(newFile, file.getFile().getName());
-            if (mkdirs) {
-                Files.move(file.getFile(), newFile);
-                file.setFile(newFile);
-            } else if (!mkdirs) {
-                throw new IOException("Can not create dirs. " + newFile.getAbsolutePath());
-            }
-        }
-        
-        int c =1;
-    }
-    */
+    
     public void moveToTempAllThreeShots() throws IOException {
         File tmp = new File(System.getProperty("user.home") + "/deep_temp/" + new Date().getTime());
         tmp.mkdirs();

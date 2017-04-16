@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
+/*
  * This is simple filesystem-based LabelAware iterator.
  * It assumes that you have one or more folders organized in the following way:
  * 1st level subfolder: label name

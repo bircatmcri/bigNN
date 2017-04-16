@@ -12,12 +12,10 @@ import org.nd4j.linalg.factory.Nd4j;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Simple utility class that builds centroid vector for LabelledDocument
- * based on previously trained ParagraphVectors model
- *
- * @author raver119@gmail.com
+/*
+ * @author BIRC@MCRI <birc.mcri@gmail.com>
  */
+
 public class MeansBuilder {
     private VocabCache<VocabWord> vocabCache;
     private InMemoryLookupTable<VocabWord> lookupTable;

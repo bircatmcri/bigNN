@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author Ehsun Behravesh <ehsun.behravesh@openet.com>
+/*
+ * @author BIRC@MCRI <birc.mcri@gmail.com>
  */
+
 public class Evaluation {
 
     private final List<String> classes;
@@ -137,24 +137,5 @@ public class Evaluation {
         return sum / classes.size();
     }
 
-    /*
-    public void printDebugData() {
-        System.out.println("\n\nEvaluation debug");
-        System.out.println("tn");
-        printMap(tnCounter);
-        System.out.println("tp");
-        printMap(tpCounter);
-        System.out.println("fn");
-        printMap(fnCounter);
-        System.out.println("fp");
-        printMap(fpCounter);
-    }
-
-    private static void printMap(Map mp) {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());            
-        }
-    }*/
+   
 }

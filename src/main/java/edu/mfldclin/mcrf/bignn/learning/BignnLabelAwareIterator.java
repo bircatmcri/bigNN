@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
+/*
  * This is simple filesystem-based LabelAware iterator. It assumes that you have
  * one or more folders organized in the following way: 1st level subfolder:
  * label name 2nd level: bunch of documents for that label
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author raver119@gmail.com
  */
-public class HamidLabelAwareIterator implements LabelAwareIterator {
+public class BignnLabelAwareIterator implements LabelAwareIterator {
 
     protected List<Tuple2<String, String>> list;
     protected AtomicInteger position = new AtomicInteger(0);
@@ -31,11 +31,11 @@ public class HamidLabelAwareIterator implements LabelAwareIterator {
     /*
         Please keep this method protected, it's used in tests
      */
-    protected HamidLabelAwareIterator() {
+    protected BignnLabelAwareIterator() {
 
     }
 
-    public HamidLabelAwareIterator(List<Tuple2<String, String>> list, Set<String> lables) {
+    public BignnLabelAwareIterator(List<Tuple2<String, String>> list, Set<String> lables) {
         this.list = list;
         this.labelsSource = new LabelsSource(new ArrayList<>(lables));
 

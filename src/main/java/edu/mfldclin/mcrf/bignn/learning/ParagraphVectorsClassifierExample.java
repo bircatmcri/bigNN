@@ -41,7 +41,7 @@ public class ParagraphVectorsClassifierExample {
 
     protected static final Logger log = LoggerFactory.getLogger(ParagraphVectorsClassifierExample.class);
     protected static final boolean APPLY_WEIGHT = true;
-    protected static final double WEIGHT = 1.4;
+    protected static final double WEIGHT = 1;
     protected ParagraphVectors paragraphVectors;
     protected LabelAwareIterator iterator;
     protected TokenizerFactory tokenizerFactory;
@@ -373,23 +373,8 @@ public class ParagraphVectorsClassifierExample {
         return eval;
     }
 
-    /*
-    private static HamidLabelAwareIterator listIterator(final JavaSparkContext sc) throws Exception {
-
-        final Set<String> set = new HashSet<>();
-
-        String path = PREFIX + "/labeled/breast_cancer";
-        List<Tuple2<String, String>> collect = getTuple2s(sc, set, path);
-        path = PREFIX + "/labeled/prostate_cancer";
-        List<Tuple2<String, String>> collect2 = getTuple2s(sc, set, path);               
-        collect.addAll(collect2);
-        path = PREFIX + "/labeled/lung_cancer";
-        List<Tuple2<String, String>> collect3 = getTuple2s(sc, set, path);
-        collect.addAll(collect3);
-        return new HamidLabelAwareIterator(collect, set);
-
-    }*/
-    private HamidLabelAwareIterator listIterator(final JavaSparkContext sc) throws Exception {
+   
+    private BignnLabelAwareIterator listIterator(final JavaSparkContext sc) throws Exception {
         final Set<String> set = new HashSet<>();
 
         File[] listFiles = trainingDir.listFiles((File f) -> {
@@ -404,7 +389,7 @@ public class ParagraphVectorsClassifierExample {
             collect.addAll(c);
         }
 
-        return new HamidLabelAwareIterator(collect, set);
+        return new BignnLabelAwareIterator(collect, set);
 
     }
 

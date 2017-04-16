@@ -1,4 +1,4 @@
-package edu.mfldclin.mcrf.deepsparktext.gui;
+package edu.mfldclin.mcrf.bignn.gui;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -7,16 +7,15 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Ehsun Behravesh <ehsun.behravesh@openet.com>
+/*
+ * @author BIRC@MCRI <birc.mcri@gmail.com>
  */
 public class GuiUtils {
 
     private static final String INFO_ICON_PNG_FILE = "Info-64.png";
     private static final String WARN_ICON_PNG_FILE = "Alert-64.png";
     private static final String ERROR_ICON_PNG_FILE = "Error-64.png";
-    private static final String APP_ICON = "logo_small.jpg";
+    private static final String APP_ICON = "logo.jpg";
 
     public static Icon getResIcon(String resource) {
         BufferedImage img = getResImage(resource);
