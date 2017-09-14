@@ -8,7 +8,7 @@
 The <strong>bigNN</strong> includes the following packages: 
 
 | Package Name        | Description |
-| :-------------: |-------------|
+| ------------- |-------------|
 | edu.mfldclin.mcrf.bignn.gui  | Implementation of the graphical user interface |
 | edu.mfldclin.mcrf.bignn.setting | Implementation of pre-defined and user-defined settings required to the system|
 | edu.mfldclin.mcrf.bignn.learning | Implementation of text pre-processing and neural network learning model|
@@ -17,8 +17,7 @@ The <strong>bigNN</strong> includes the following packages:
 <p align="justify">
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 
-Inline-style: 
-![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png "bigNN software architectural model")
+![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png width=100 "bigNN software architectural model")
 </p>
 
 The workflow and architectural model of the <strong>bigNN</strong> is fully explained in the following work:
