@@ -13,6 +13,11 @@ The <strong>bigNN</strong> includes the following packages:
 | <strong>edu.mfldclin.mcrf.bignn.learning</strong> | Implementation of text pre-processing and neural network learning model|
 | <strong>edu.mfldclin.mcrf.bignn.evaluation</strong> | It evaluates the neural network predictive model|
 </p>
+
+### Requirements:
++ Apache Spark 2.10
++ Java2SE 8
+
 <p align="justify">
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 </p>
