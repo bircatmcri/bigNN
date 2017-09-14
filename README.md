@@ -17,7 +17,7 @@ The <strong>bigNN</strong> includes the following packages:
 <p align="justify">
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 
-![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png  =250x250 "bigNN software architectural model")
+![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png=250x250 "bigNN software architectural model")
 </p>
 
 The workflow and architectural model of the <strong>bigNN</strong> is fully explained in the following work:
