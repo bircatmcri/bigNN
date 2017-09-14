@@ -8,7 +8,7 @@ The <strong>bigNN</strong> includes the following packages:
 
 | Package Name        | Description |
 | ------------- |-------------|
-| edu.mfldclin.mcrf.bignn.gui  | Implementation of the graphical user interface |
+| <strong>edu.mfldclin.mcrf.bignn.gui</strong>  | Implementation of the graphical user interface |
 | edu.mfldclin.mcrf.bignn.setting | Implementation of pre-defined and user-defined settings required to the system|
 | edu.mfldclin.mcrf.bignn.learning | Implementation of text pre-processing and neural network learning model|
 | edu.mfldclin.mcrf.bignn.evaluation | It evaluates the neural network predictive model|
