@@ -5,5 +5,5 @@
 </p>
 The workflow and architectural model of the <strong>bigNN</strong> has been explained in the following work:
 <p align="justify">
-Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. bigNN: an open-source sentence classifier using big data neural network architecture. IEEE BIG DATA 2017. (Under Review)
+Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. <strong>bigNN: an open-source sentence classifier using big data neural network architecture. IEEE BIG DATA 2017.</strong> (Under Review)
 </p>
