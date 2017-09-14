@@ -18,6 +18,8 @@ The <strong>bigNN</strong> includes the following packages:
 + Apache Spark 2.10
 + Java2SE 8
 
+
+### bigNN software architectural model:
 <p align="justify">
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 </p>
