@@ -12,11 +12,11 @@ The <strong>bigNN</strong> includes the following packages:
 + <strong>edu.mfldclin.mcrf.bignn.learning</strong>: Implementation of text pre-processing and neural network learning model
 + <strong>edu.mfldclin.mcrf.bignn.evaluation</strong>: It evaluates the neural network predictive model
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Package Name        | Description     |
+| ------------- |:-------------:|
+| edu.mfldclin.mcrf.bignn.gui      | Implementation of the graphical user interface  |
+| edu.mfldclin.mcrf.bignn.setting      | Implementation of pre-defined and user-defined settings required to the system       |
+| edu.mfldclin.mcrf.bignn.learning | Implementation of text pre-processing and neural network learning model       |
 </p>
 <p align="justify">
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
