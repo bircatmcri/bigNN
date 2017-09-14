@@ -7,7 +7,7 @@
 <p align="justify">
 The <strong>bigNN</strong> includes the following packages: 
 
-..* salam
++ salam
 
 The workflow and architectural model of the <strong>bigNN</strong> has been explained in the following work:
 <p align="justify">
