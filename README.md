@@ -11,8 +11,15 @@ The <strong>bigNN</strong> includes the following packages:
 + <strong>edu.mfldclin.mcrf.bignn.setting</strong>: Implementation of pre-defined and user-defined settings required to the system 
 + <strong>edu.mfldclin.mcrf.bignn.learning</strong>: Implementation of text pre-processing and neural network learning model
 + <strong>edu.mfldclin.mcrf.bignn.evaluation</strong>: It evaluates the neural network predictive model
+</p>
+<p align="justify">
+The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 
-The workflow and architectural model of the <strong>bigNN</strong> has been explained in the following work:
+Inline-style: 
+![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png "bigNN software architectural model")
+</p>
+
+The workflow and architectural model of the <strong>bigNN</strong> is fully explained in the following work:
 <p align="justify">
 Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. <strong>bigNN: an open-source sentence classifier using big data neural network architecture. IEEE BIG DATA 2017.</strong> (Under Review)
 </p>
