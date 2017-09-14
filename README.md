@@ -17,7 +17,7 @@ The <strong>bigNN</strong> includes the following packages:
 The <strong>bigNN</strong> software architectural model is shown in includes the following figure.  
 </p>
 
-<p>
+
 ![alt text](https://github.com/bircatmcri/bigNN/blob/master/bigNN%20architecture.png  "bigNN software architectural model")
 </p>
 </hr>
