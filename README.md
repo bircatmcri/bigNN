@@ -31,7 +31,8 @@ The <strong>bigNN</strong> software architectural model is shown in includes the
 ---
 ### Publications:
 
-The workflow and architectural model of the <strong>bigNN</strong> is fully explained in the following work:
+The workflow and architectural model of the <strong>bigNN</strong> is fully explained in the following work. Any publication using the bigNN should reference to:
+
 <p align="justify">
-<strong>[1]</strong> Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. <i>bigNN: an open-source big data toolkit focused on biomedical sentence classification</i>. <strong>IEEE BIG DATA 2017.</strong> (Under Review)
+<strong>[1]</strong> Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. <i>bigNN: an open-source big data toolkit focused on biomedical sentence classification</i>. <strong>IEEE BIG DATA 2017.</strong> (Accepted)
 </p>
