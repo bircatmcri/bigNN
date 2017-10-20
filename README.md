@@ -30,7 +30,9 @@ The <strong>bigNN</strong> software architectural model is shown in includes the
 
 ---
 ### Acknowledgment
-The project described was supported by the Clinical and Translational Science Award (CTSA) program, through the NIH National Center for Advancing Translational Sciences (NCATS), grant UL1TR000427. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.
+
+<p align="justify">
+The project described was supported by the Clinical and Translational Science Award (CTSA) program, through the NIH National Center for Advancing Translational Sciences (NCATS), grant UL1TR000427. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.</p>
 
 
 
