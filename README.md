@@ -30,11 +30,11 @@ The <strong>bigNN</strong> software architectural model is shown in includes the
 
 ---
 
-### Collborators:
+### Collaborators:
 
 1) Ahmad P. Tafti (Marshfield Clinic Research Institute)
 2) Ehsun Behravesh (IEEE Member)
-3) Mehdi Assefi (University og Georgia)
+3) Mehdi Assefi (University of Georgia)
 4) Eric LaRose (Marshfield Clinic Research Institute)
 5) Jonathan Badger (Marshfield Clinic Research Institute)
 6) John Mayer (Marshfield Clinic Research Institute)
