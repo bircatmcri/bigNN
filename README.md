@@ -29,7 +29,23 @@ The <strong>bigNN</strong> software architectural model is shown in includes the
 </p>
 
 ---
-### Acknowledgment
+
+### Collborators:
+
+1) Ahmad P. Tafti (Marshfield Clinic Research Institute)
+2) Ehsun Behravesh (IEEE Member)
+3) Mehdi Assefi (University og Georgia)
+4) Eric LaRose (Marshfield Clinic Research Institute)
+5) Jonathan Badger (Marshfield Clinic Research Institute)
+6) John Mayer (Marshfield Clinic Research Institute)
+7) AnHai Doan (University of Wisconsin-Madison)
+8) David Page (University of Wisconsin-Madison)
+9) Peggy Peissig (Marshfield Clinic Research Institute)
+
+
+
+
+### Acknowledgment:
 
 <p align="justify">
 The project described was supported by the Clinical and Translational Science Award (CTSA) program, through the NIH National Center for Advancing Translational Sciences (NCATS), grant UL1TR000427. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.</p>
