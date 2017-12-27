@@ -57,5 +57,13 @@ The project described was supported by the Clinical and Translational Science Aw
 The workflow and architectural model of the <strong>bigNN</strong> is fully explained in [1] the following work. Any publication using the <strong>bigNN</strong> would encourage to cite the following papers:
 
 <p align="justify">
-<strong>[1]</strong> Ahmad P. Tafti, Ehsun Behravesh, Mehdi Assefi, Eric LaRose, Jonathan Badger, John Mayer, AnHai Doan, David Page, Peggy Peissig. 2017. <i>bigNN: an open-source big data toolkit focused on biomedical sentence classification</i>. <strong>IEEE BIG DATA 2017.</strong> <a href="https://github.com/bircatmcri/bigNN/blob/master/bigNN.pdf" target="_blank">[<strong>Paper</strong>]</a>
- </p>
+<strong>[1]</strong> Tafti, A.P., Behravesh, E., Assefi, M., LaRose, E., Badger, J., Mayer, J., Doan, A., Page, D., Peissig, P. 2017. bigNN: an open-source big data toolkit focused on biomedical sentence classification. IEEE BIG DATA 2017. <a href="https://github.com/bircatmcri/bigNN/blob/master/bigNN.pdf" target="_blank">[<strong>Paper</strong>]</a>
+
+<strong>[2]</strong> Tafti, A.P., Badger, J., LaRose, E., Shirzadi, E., Mahnke, A., Mayer, J., Ye, Z., Page, D. and Peissig, P., 2017. Adverse Drug Event Discovery Using Biomedical Literature: A Big Data Neural Network Adventure. JMIR medical informatics, 5(4), p.e51.</strong> <a href="https://github.com/bircatmcri/bigNN/blob/master/ADEs_JMIR.pdf" target="_blank">[<strong>Paper</strong>]</a>
+
+</p>
+
+
+
+
+
