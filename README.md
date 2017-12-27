@@ -54,7 +54,8 @@ The project described was supported by the Clinical and Translational Science Aw
 
 ### Publications:
 
-The workflow and architectural model of the <strong>bigNN</strong> is fully explained in [1] the following work. Any publication using the <strong>bigNN</strong> would encourage to cite the following papers:
+<p align="justify">
+The workflow and architectural model of the <strong>bigNN</strong> is fully explained in <strong>[1]</strong>. Any publication using the <strong>bigNN</strong> would encourage to cite the two following papers. Thanks! 
 
 <p align="justify">
 <strong>[1]</strong> Tafti, A.P., Behravesh, E., Assefi, M., LaRose, E., Badger, J., Mayer, J., Doan, A., Page, D., Peissig, P. 2017. bigNN: an open-source big data toolkit focused on biomedical sentence classification. IEEE BIG DATA 2017. <a href="https://github.com/bircatmcri/bigNN/blob/master/bigNN.pdf" target="_blank">[<strong>Paper</strong>]</a>
